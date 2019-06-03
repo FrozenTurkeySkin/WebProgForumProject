@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="style/profileCSS.css">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<div class="header">
+  <h1>H 2 M U</h1>
+</div>
+
+<div class="topnav">
+  <a href="homePage.html">Home</a>
+  <a href="createPost.html">Create Post</a>
+  <a href="#">Nav Option 2</a>
+  <a href="#">Nav Option 3</a>
+  <a href="login.html" style="float:right">Logout</a>
+  <a href="#" style="float:right">Profile</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+	<div style="height:200px;">Image, can be clickable to change profile pic in edit mode.</div>
+    </div>
+  </div>
+   <div class="rightcolumn">
+    <div class="card">
+      <h1>About Me</h1>
+      <p><b>Edit Username: </b>(Then whatever the person's name is) <input type="text" name="newUserNameProfile"></p>
+      <p><b>Edit Password: </b>(Then whatever the person's pass is, should be in asterisks) <input type="text" name="newPasswordProfile"></p>
+      <p><b>Confirm Password: </b>(Then whatever the person's pass is, should be in asterisks) <input type="text" name="confirmPasswordProfile" required></p>
+      <p><b>Edit Email: </b>(Then whatever the person's email is) <input type="email" name="newEmailProfile"></p>
+      <p><b>Set Birthday: </b><input type="date" name="userBirthday"></p>
+      <p><b>Set Title: </b><input list="titles" name="title">
+  <datalist id="titles">
+    <option value="None">
+    <option value="Placeholder">
+  </datalist></p>
+      <p><b>Short Description: </b></p>
+<textarea rows="10" cols="75"></textarea>
+</div>
+<div class="card">
+      <button type="button" onClick="window.location='profilePage.html' " style="float:right; margin-top: 8px; padding: 5px;">Save Changes</button>
+<button type="button" onClick="window.location='profilePage.html' " style="float:right; margin-top: 8px; margin-right:5px; padding: 5px;">Cancel</button>    
+</div>
+</div>
+</body>
+</html>

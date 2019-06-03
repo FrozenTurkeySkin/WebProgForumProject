@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Log In Form</title>
+<link rel="stylesheet" type="text/css" href="style/loginCSS.css">
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<form action="action_page.php">
+  <div class="imgcontainer">
+    <img src="images/forumLogo.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+<h2>Please enter the necessary information to create your account</h2>
+    <label for="newuname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="newuname" required>
+
+    <label for="newpsw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="newpsw" required>
+
+    <label for="confirmpsw"><b>Confirm Password</b></label>
+    <input type="password" placeholder="Confirm Password" name="confirmpsw" required>
+
+    <label for="newem"><b>Email Address: </b></label>
+    <input type="email" placeholder="Enter Email Address" name="newem" required>
+
+    <button type="submit">Create Account</button>
+    <button onClick="window.location='login.html' " >Login</button>
+  </div>
+
+</form>
+</body>
+</html>
