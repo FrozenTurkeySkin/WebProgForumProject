@@ -1,8 +1,8 @@
 <?php
 include("init.php");
 session_start();
-$use_topic = $use_body = $use_date = "";
-$sql = "SELECT * FROM user_Post WHERE created_by = '".$_SESSION['username']."' ORDER BY datetime ";
+$use_topic = $use_body = $use_date = $use_topic1 = $use_body1 = $use_date1 = $use_topic2 = $use_body2 = $use_date2 = $use_topic3 = $use_body3 = $use_date3 = "";
+$sql = "SELECT * FROM user_Post WHERE created_by = '".$_SESSION['username']."' ";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) < 0) {
@@ -34,74 +34,51 @@ if (mysqli_num_rows($result) < 0) {
     <div class="card">
       <?php 
         while ($user = mysqli_fetch_assoc($result)) {
-        	$current_row_id = $user['id'];
-        	$q = "SELECT id, topic, datetime, details, FROM user_Post WHERE id = '".$current_row_id."' ";
-        	$resultset = mysqli_query($conn, $q);
-        	$rows = mysqli_fetch_array($resultset);
-        	
-        	
-        	if ($current_row_id == 1) {
-        		$use_topic = $rows['topic'];
-        	    $use_body = $rows['details'];
-        	    $use_date = $rows['datetime'];?>
+        	$current_row_id = $user['id'];?>
         
-      <h2><?php echo $use_topic?></h2>
-      <h5><?php echo $use_date?></h5>
+      <h2><?php echo $user['topic']?></h2>
+      <h5><?php echo $user['datetime']?></h5>
       
       
-      <p><?php echo $use_body?></p>
+      <p><?php echo $user['details']?></p>
       <p class="upvoteCounter" style="color: green; float: left;">Upvotes(0)</p>
       <p class="downvoteCounter" style="color: red; float: left;">    Downvotes(0)</p>
       <p class="commentCounter" style="color: gray; float: right;"> Comments (This should be programmed)</p>
     </div>
-    <?php 
-      }elseif ($current_row_id == 2) {
-      	$use_topic1 = $rows['topic'];
-      	$use_body1 = $rows['details'];
-      	$use_date1 = $rows['datetime'];?>
 
     <div class="card">
-      <h2><?php echo $use_topic1?></h2>
-      <h5><?php echo $use_date1?></h5>
+      <h2><?php echo $user['topic']?></h2>
+      <h5><?php echo $user['datetime']?></h5>
       
-      <p><?php echo $use_body1?></p>
+      <p><?php echo $user['details']?></p>
       <p class="upvoteCounter" style="color: green; float: left;">Upvotes(0)</p>
       <p class="downvoteCounter" style="color: red; float: left;">    Downvotes(0)</p>
       <p class="commentCounter" style="color: gray; float: right;"> Comments (This should be programmed)</p>
     </div>
-    <?php 
-        }elseif ($current_row_id == 3) {
-          $use_topic2 = $rows['topic'];
-          $use_body2 = $rows['details'];
-          $use_date2 = $rows['datetime'];?>
+    
     <div class="card">
-      <h2><?php echo $use_topic2?></h2>
-      <h5><?php echo $use_date2?></h5>
+      <h2><?php echo $user['topic']?></h2>
+      <h5><?php echo $user['datetime']?></h5>
       
-      <p><?php echo $use_body2?></p>
+      <p><?php echo $user['details']?></p>
       <p class="upvoteCounter" style="color: green; float: left;">Upvotes(0)</p>
       <p class="downvoteCounter" style="color: red; float: left;">    Downvotes(0)</p>
       <p class="commentCounter" style="color: gray; float: right;"> Comments (This should be programmed)</p>
     </div>
-    <?php 
-      }elseif ($current_row_id == 4) {
-      	  $use_topic3 = $rows['topic'];
-      	  $use_body3 = $rows['details'];
-      	  $use_date3 = $rows['datetime'];?>
+    
       
     <div class="card">
-      <h2><?php echo $use_topic3?></h2>
-      <h5><?php echo $use_date3?></h5>
+      <h2><?php echo $user['topic']?></h2>
+      <h5><?php echo $user['datetime']?></h5>
       
-      <p><?php echo $use_body3?></p>
+      <p><?php echo $user['details']?></p>
       <p class="upvoteCounter" style="color: green; float: left;">Upvotes(0)</p>
       <p class="downvoteCounter" style="color: red; float: left;">    Downvotes(0)</p>
       <p class="commentCounter" style="color: gray; float: right;"> Comments (This should be programmed)</p>
     </div>
     <?php
      }
-       }
-         }?>
+      }?>
 
   </div>
   <div class="rightcolumn">

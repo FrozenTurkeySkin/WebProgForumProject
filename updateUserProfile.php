@@ -22,28 +22,28 @@ $newPasswordErr = $newConfirmPasswordErr = $emailErr = "";
       if (!empty($_POST["newEmailProfile"])) {
     	$_SESSION['email'] = $_POST["newEmailProfile"];
 
-    	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    		$emailErr = "Invalid email format!";
-    	}
+    	  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    		   $emailErr = "Invalid email format!";
+    	   }
       }
   	  
   	  if (!empty($_POST["newPasswordProfile"])) {
   		$_SESSION['newPassword'] = $_POST["newPasswordProfile"];
-  		
+  		}
   		if (empty($_POST["confirmPasswordProfile"])) {
   			$newConfirmPasswordErr = "This field must not be empty.";
   		}else{
             $_SESSION['newConfirmPassword'] = $_POST["confirmPasswordProfile"];
   		}
-  	  }elseif (strlen($newPassword) < 8) {
-  		$newPasswordErr = "A password must have at least have 8 characters.";
-  	  }else{
-  		if ($newPassword == $newConfirmPassword) {
-  			$_SESSION['passwordHashed'] = password_hash($password, PASSWORD_BCRYPT);
-  		}else{
-  			$newConfirmPasswordErr = "You entered a wrong password please try again.";
-  		}
-  	  }
+         if (strlen($newPassword) < 8) {
+  		      $newPasswordErr = "A password must have at least have 8 characters.";
+  	     }else{
+  		       if ($newPassword == $newConfirmPassword) {
+  		    	 $_SESSION['passwordHashed'] = password_hash($password, PASSWORD_BCRYPT);
+  		      }else{
+  			      $newConfirmPasswordErr = "You entered a wrong password please try again.";
+  		      }
+  	     }
 
   	  if (!empty($_POST["userBirthday"])) {
   		$_SESSION['birthday'] = $_POST["userBirthday"];
@@ -56,18 +56,19 @@ $newPasswordErr = $newConfirmPasswordErr = $emailErr = "";
       if (empty($newPasswordErr) && empty($newConfirmPasswordErr) && empty($emailErr)) {
       	echo $_SESSION['newUseName'] .$_SESSION['email'] .$_SESSION['newPassword'] .$_SESSION['passwordHashed'] . $_SESSION['birthday'] . $_SESSION['occupation'];
       	
-      		$query = "UPDATE user_Profile set username = '".$_SESSION['newUseName']."', email = '".$_SESSION['email']."', password = '".$_SESSION['newPassword']."', passwordHashed = '".$_SESSION['passwordHashed']."', birthday = '".$_SESSION['birthday']."', Occupation = '".$_SESSION['occupation']."' WHERE id = 1 ";
+      		$query = "INSERT user_Profile SET username = '".$_SESSION['newUseName']."', email = '".$_SESSION['email']."', password = '".$_SESSION['newPassword']."', passwordHashed = '".$_SESSION['passwordHashed']."', birthday = '".$_SESSION['birthday']."', Occupation = '".$_SESSION['occupation']."' WHERE username = '".$_SESSION['username']."' ";
 
       	if (mysqli_query($conn, $query)) {
       		echo "Record updated succesfully!";
-            
+          header("Location:userProfile.php");  
       	}else{
       		echo "Error updating record: " .mysqli_error($conn);
       	}
       
       }  
     }
-}
+  }
+ }  
 ?>
 <!DOCTYPE html>
 <html>
